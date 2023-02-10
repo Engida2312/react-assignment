@@ -13,12 +13,12 @@ function Dashboard() {
   const [lastRefresh, setLastRefresh] = useState(Date.now());
 
   useEffect(() => {
-    if (Date.now() - lastRefresh >= 60 * 60 * 1000) {
-      setLastRefresh(Date.now());
-      dispatch(showAllListings());
-
-    }
-  }, [dispatch, lastRefresh]);
+    // if (Date.now() - lastRefresh >= 60 * 60 * 1000)  {
+        // setLastRefresh(Date.now());
+          window.localStorage.setItem("allListings", JSON.stringify(allListings))
+          dispatch(showAllListings());
+    // }
+  }, [dispatch]);
 
   if(isLoading){
     return<>

@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import dashboardService from "./dashboardService";
-
+const alldata = JSON.parse(localStorage.getItem("allListings"))
 const initialState = {
     isLoading: false,
     isSuccess:false,
     isError:false,
-    allListings: [],
-    fevorites: "",
-    message: ''
+    allListings: alldata || [],
 }
 
 // all listings
@@ -47,13 +45,6 @@ const dashboardSlice = createSlice({
                 }
             });
         },
-        addFevorites: (state, action)=>{
-            state.allListings.map((item)=>{
-                if (item.id === action.payload.id) {
-                    item.fevorites = action.payload.fevorites;
-                }
-            })
-        }
     },
     extraReducers: (builder)=>{
         builder
@@ -74,6 +65,6 @@ const dashboardSlice = createSlice({
     }
 });
 
-export const { deleteListing, updateListing, addFevorites } = dashboardSlice.actions;
+export const { deleteListing, updateListing } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer

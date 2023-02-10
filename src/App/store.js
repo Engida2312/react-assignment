@@ -1,15 +1,7 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit'
 import dashboardSlice from '../Features/dashboardSlice'
 import storage from 'redux-persist/lib/storage'
-import {
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-  } from 'redux-persist'
+import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
     key: 'root',
@@ -27,8 +19,6 @@ export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      serializableCheck: false
     }),
 })
