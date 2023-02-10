@@ -6,10 +6,6 @@ const api = axios.create({
 
 const showAllListings = async()=>{
     const response = await api.get('/users')
-    if(response.data){
-        console.log('dashboard')
-        console.log(response.data)
-    }
     return response.data
 }
 

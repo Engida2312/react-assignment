@@ -4,15 +4,12 @@ import { deleteListing, updateListing } from '../Features/dashboardSlice';
 import {Card, Modal, Form, Input} from 'antd';
 import {HeartOutlined, HeartFilled, EditOutlined, DeleteFilled, MailOutlined, PhoneOutlined, GlobalOutlined } from '@ant-design/icons'
 
-
-
 const ItemCard = ({ id, name, email, phone, username, website})=>{
     const dispatch = useDispatch()
     const [newName, setName] = useState(name);
     const [newEmail, setEmail] = useState(email);
     const [newPhone, setPhone] = useState(phone);
     const [newWebsite, setWebsite] = useState(website);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [heartFilled, setHeartFilled] = useState(false);
 
